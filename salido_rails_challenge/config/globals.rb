@@ -1,0 +1,1 @@
+WINE_DB_URL = 'http://services.wine.com/api/beta2/service.svc/JSON/'
