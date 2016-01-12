@@ -3,9 +3,11 @@
   %head
     %title Product Index
   %body
+    %a{:href => "/products/new"} Add a new Wine
     %table{:border => 1}
       %tbody
         %tr
+          %td ID
           %td Wine Name
           %td WineDB URL
           %td Price (min)
@@ -14,6 +16,7 @@
           %td Type
       - @wines.each do |wine|
         %tr
+          %td= wine.id
           %td= wine.name
           %td= wine.url
           %td= wine.pricemin
