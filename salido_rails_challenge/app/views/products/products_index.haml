@@ -16,7 +16,7 @@
           %td Type
       - @wines.each do |wine|
         %tr
-          %td= wine.id
+          %td= link_to wine.id, :href => "/products/edit?id=#{wine.id}"
           %td= wine.name
           %td= wine.url
           %td= wine.pricemin

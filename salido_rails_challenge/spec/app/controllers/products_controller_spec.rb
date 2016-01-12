@@ -37,4 +37,30 @@ describe '/products' do
       end
     end
   end
+
+  describe '#edit' do
+    context 'when the page is rendered with a valid id' do
+      it 'returns a 200' do
+        get '/products/edit', {:id => 1}
+
+        expect(last_response.status).to eq(200)
+      end
+
+      it 'redirects to the edit page properly' do
+        content = "Update Wine ID"
+
+        get '/products/edit', {:id => 1}
+
+        expect(last_response.body).to include(content)
+      end
+    end
+
+    # context 'when the page is rendred with an invalid id' do
+    #   it 'returns a 200' do
+    #     get '/products/edit', {:id => 1000}
+
+    #     expect(last_response.status).to eq(200)
+    #   end
+    # end
+  end
 end

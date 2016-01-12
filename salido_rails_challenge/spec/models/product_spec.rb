@@ -8,8 +8,9 @@
 #  pricemin    :float
 #  pricemax    :float
 #  priceretail :float
-#  type        :string
-#  year        :string
+#  winetype    :string
 #  created_at  :datetime
 #  updated_at  :datetime
+#
+
 #
