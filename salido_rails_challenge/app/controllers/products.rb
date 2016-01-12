@@ -13,9 +13,11 @@ SalidoRailsChallenge::App.controllers :products do
 
   get :edit do
     id = params['id']
-    if Product.find(id).present?
+    if Product.find_by_id(id).present?
       @wine = Product.find(id)
       render 'products_update'
+    else
+      render 'products_missing'
     end
   end
 

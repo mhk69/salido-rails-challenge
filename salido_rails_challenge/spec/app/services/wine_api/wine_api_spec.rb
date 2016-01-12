@@ -19,7 +19,7 @@ describe WineApi do
         subject.pull_and_insert(api_key)
       end
 
-      # Ideally a test here to be able to check return is a list and one for proper data
+      # Ideally a test here to be able to check return is a list and one for proper data - not sure how to set this one up properly
     end
   end
 end

@@ -9,6 +9,33 @@ Dir[File.expand_path(File.dirname(__FILE__) + "/support/*.rb")].each(&method(:re
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+  conf.include FactoryGirl::Syntax::Methods
+
+  FactoryGirl.find_definitions
+
+  conf.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    # pre_count will stop from truncating tables that were not used
+    # use truncation for now, but deletion could be faster
+    DatabaseCleaner.clean_with(:truncation, :pre_count => true)
+
+    begin
+      DatabaseCleaner.start
+      FactoryGirl.lint
+    ensure
+      DatabaseCleaner.clean
+    end
+  end
+
+  # need start/stop when using transaction cleaning so it knows
+  # when to open the transaction
+  conf.before do
+    DatabaseCleaner.start
+  end
+
+  conf.after do
+    DatabaseCleaner.clean
+  end
 end
 
 # You can use this method to custom specify a Rack app

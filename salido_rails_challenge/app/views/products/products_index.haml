@@ -1,25 +1,35 @@
 !!! 5
 %html
   %head
-    %title Product Index
+    %title Wine Index
+    %link{:href => "https://bootswatch.com/superhero/bootstrap.min.css", :rel => "stylesheet"}
+  .container
+    .row
+      %h1
+        = "It's not pretty - but it's tasty!"
   %body
-    %a{:href => "/products/new"} Add a new Wine
-    %table{:border => 1}
-      %tbody
-        %tr
-          %td ID
-          %td Wine Name
-          %td WineDB URL
-          %td Price (min)
-          %td Price (max)
-          %td Price (retail)
-          %td Type
-      - @wines.each do |wine|
-        %tr
-          %td= link_to wine.id, :href => "/products/edit?id=#{wine.id}"
-          %td= wine.name
-          %td= wine.url
-          %td= wine.pricemin
-          %td= wine.pricemax
-          %td= wine.priceretail
-          %td= wine.winetype
+    .container
+      .row
+        .col-md-4
+          %a{:href => "/products/new"} Add a new Wine
+    .container
+      %table.table
+        %thead
+          %tr
+            %th ID
+            %th Wine Name
+            %th WineDB URL
+            %th Price (min)
+            %th Price (max)
+            %th Price (retail)
+            %th Type
+        %tbody
+          - @wines.each do |wine|
+            %tr
+              %td= link_to wine.id, :href => "/products/edit?id=#{wine.id}"
+              %td= wine.name
+              %td= wine.url
+              %td= wine.pricemin
+              %td= wine.pricemax
+              %td= wine.priceretail
+              %td= wine.winetype

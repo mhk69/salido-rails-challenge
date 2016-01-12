@@ -2,44 +2,55 @@
 %html
   %head
     %title= "Update Wine ID #{@wine.id}"
+    %link{:href => "https://bootswatch.com/superhero/bootstrap.min.css", :rel => "stylesheet"}
   %h3{:align => "center"}
     = "Add a Wine"
   %body
-    .row
-      = "Old Wine Name: #{@wine.name}"
-    .row
-      = "Old WineDB URL: #{@wine.url}"
-    .row
-      = "Old Min Price: #{@wine.pricemin}"
-    .row
-      = "Old Max Price: #{@wine.pricemax}"
-    .row
-      = "Old Retail Price: #{@wine.priceretail}"
-    .row
-      = "Old Type: #{@wine.winetype}"
+    .container
+      .col-md-4
+        .row
+          = "Old Wine Name: #{@wine.name}"
+        .row
+          = "Old WineDB URL: #{@wine.url}"
+        .row
+          = "Old Min Price: #{@wine.pricemin}"
+        .row
+          = "Old Max Price: #{@wine.pricemax}"
+        .row
+          = "Old Retail Price: #{@wine.priceretail}"
+        .row
+          = "Old Type: #{@wine.winetype}"
+    %br
 
   = form_tag "/products/update", :method => 'POST' do
-    .row
-      %input{:name => "wine_id", :type => "hidden", :value=> "#{@wine.id}"}
-    .row
-      = "Updated Wine Name:"
-      %input{:id => "wine_name", :name => "wine_name", :type => "text", :value=> "", :placeholder => "Wine Name", :class => "input"}
-    .row
-      = "Updated WineDB URL:"
-      %input{:id => "wine_url", :name => "wine_url", :type => "text", :value=> "", :placeholder => "WineDB URL", :class => "input"}
-    .row
-      = "Updated Min Price:"
-      %input{:id => "wine_minprice", :name => "wine_minprice", :type => "text", :value=> "", :placeholder => "Min Price", :class => "input"}
-    .row
-      = "Updated Max Price:"
-      %input{:id => "wine_maxprice", :name => "wine_maxprice", :type => "text", :value=> "", :placeholder => "Max Price", :class => "input"}
-    .row
-      = "Updated Retail Price:"
-      %input{:id => "wine_retailprice", :name => "wine_retailprice", :type => "text", :value=> "", :placeholder => "Retail Price", :class => "input"}
-    .row
-      = "Updated Type:"
-      %input{:id => "wine_type", :name => "wine_type", :type => "text", :value=> "", :placeholder => "Basket, Red Wine, etc", :class => "input"}
-    .row.submit-row
-      = submit_tag "Add", class: "add"
-
-    %a{:href => "/products"} Products Page
+    .container
+      .row
+        %input{:name => "wine_id", :type => "hidden", :value=> "#{@wine.id}"}
+      .col-md-4
+        .row
+          = "Updated Wine Name:"
+          %input{:id => "wine_name", :name => "wine_name", :type => "text", :value=> "", :placeholder => "Wine Name", :class => "input"}
+      .col-md-4
+        .row
+          = "Updated WineDB URL:"
+          %input{:id => "wine_url", :name => "wine_url", :type => "text", :value=> "", :placeholder => "WineDB URL", :class => "input"}
+      .col-md-4
+        .row
+          = "Updated Min Price:"
+          %input{:id => "wine_minprice", :name => "wine_minprice", :type => "text", :value=> "", :placeholder => "Min Price", :class => "input"}
+      .col-md-4
+        .row
+          = "Updated Max Price:"
+          %input{:id => "wine_maxprice", :name => "wine_maxprice", :type => "text", :value=> "", :placeholder => "Max Price", :class => "input"}
+      .col-md-4
+        .row
+          = "Updated Retail Price:"
+          %input{:id => "wine_retailprice", :name => "wine_retailprice", :type => "text", :value=> "", :placeholder => "Retail Price", :class => "input"}
+      .col-md-4
+        .row
+          = "Updated Type:"
+          %input{:id => "wine_type", :name => "wine_type", :type => "text", :value=> "", :placeholder => "Basket, Red Wine, etc", :class => "input"}
+      .col-md-4
+        .row.submit-row
+          = submit_tag "Add", class: "add"
+          %a{:href => "/products"} Products Page

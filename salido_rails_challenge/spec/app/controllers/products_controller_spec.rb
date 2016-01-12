@@ -40,6 +40,10 @@ describe '/products' do
 
   describe '#edit' do
     context 'when the page is rendered with a valid id' do
+      before do
+        FactoryGirl.create :product
+      end
+
       it 'returns a 200' do
         get '/products/edit', {:id => 1}
 
@@ -55,12 +59,20 @@ describe '/products' do
       end
     end
 
-    # context 'when the page is rendred with an invalid id' do
-    #   it 'returns a 200' do
-    #     get '/products/edit', {:id => 1000}
+    context 'when the page is rendred with an invalid id' do
+      it 'returns a 200' do
+        get '/products/edit', {:id => 1000}
 
-    #     expect(last_response.status).to eq(200)
-    #   end
-    # end
+        expect(last_response.status).to eq(200)
+      end
+
+      it 'redirects to the missing page properly' do
+        content = "Missing some sort of data"
+
+        get '/products/edit', {:id => 1000}
+
+        expect(last_response.body).to include(content)
+      end
+    end
   end
 end
