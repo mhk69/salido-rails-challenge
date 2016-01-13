@@ -1,6 +1,6 @@
 SalidoRailsChallenge::App.controllers :products do
   get :index do
-    # WineApi.new.pull_and_insert('155bc41216c9b981b8a05cee921f4fb1')
+    WineApi.new.pull_and_insert(WINE_DB_KEY)
 
     @wines = Product.all
 

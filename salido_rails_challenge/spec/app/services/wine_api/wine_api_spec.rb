@@ -12,7 +12,7 @@ describe WineApi do
         allow(subject).to receive(:insert_data)
       end
       it 'calls build_url_and_params with the proper params' do
-        api_key = '155bc41216c9b981b8a05cee921f4fb1'
+        api_key = WINE_DB_KEY
 
         expect(subject).to receive(:build_url_and_params).with(api_key, 5).once
 
